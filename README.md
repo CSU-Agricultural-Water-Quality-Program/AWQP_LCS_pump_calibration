@@ -18,6 +18,7 @@ This repository contains the **Pump Calibration Code** for the **Low-Cost Water 
 #### Software
 - [Particle Workbench](https://docs.particle.io/workbench/) or Arduino IDE
 - [Particle CLI](https://docs.particle.io/tutorials/developer-tools/cli/) (optional)
+- **Excel file: Pump Calibration Test.xlsx** (included in repository)
 
 ---
 
@@ -28,6 +29,7 @@ AWQP_LCS_pump_calibration/
 │   └── AWQP_pump_calibration.ino   # Main firmware script
 ├── lib/
 │   └── AccelStepper/               # AccelStepper library
+├── Pump Calibration Test.xlsx      # Spreadsheet for calibration
 ├── README.md                       # Project documentation
 ```
 
@@ -56,14 +58,15 @@ This code drives a stepper motor using the AccelStepper library and a DRV8825 dr
    - Flash `AWQP_pump_calibration.ino` to your Boron via USB or Particle OTA.
 
 3. **Run Calibration**
-   - The pump will run for a fixed number of steps.
-   - After stopping, measure the volume dispensed.
-   - Repeat the cycle multiple times with different step values if needed.
+   - Open the included **Pump Calibration Test.xlsx** file.
+   - Set firmware to run **10,000 steps** and perform **10 trials**.
+   - Record the **output volume in mL** for each trial.
+   - Repeat the procedure in **10,000 step increments up to 50,000 steps**.
+   - For each step count, calculate **mL/step**.
+   - Use Excel to generate a **linear regression** line relating `steps` to `volume`.
 
-4. **Create Calibration Curve**
-   - Use Excel or similar tool to plot volume (mL) vs. steps.
-   - Fit a linear regression line and record the equation.
-   - This formula will be used in production firmware for sample volume estimation.
+4. **Apply the Equation**
+   - Use the regression formula (e.g., `volume = mL/step × steps`) in your production firmware.
 
 ---
 
