@@ -9,9 +9,8 @@ This repository contains the **Pump Calibration Code** for the **Low-Cost Water 
 #### Hardware
 - Particle Boron LTE Microcontroller (e.g., BRN404)
 - DRV8825 Stepper Motor Driver
-- NEMA 17 Stepper Motor
+- Peristaltic Stepper Pump
 - 12V External Power Supply
-- Peristaltic Pump Head with Stepper Coupling
 - Breadboard or soldered perfboard
 - Graduated cylinder or precision scale
 
@@ -65,9 +64,10 @@ This code drives a stepper motor using the AccelStepper library and a DRV8825 dr
    - For each step count, calculate **mL/step**.
    - Use Excel to generate a **linear regression** line relating `steps` to `volume`.
 
+
 4. **Apply the Equation**
    - Use the regression formula (e.g., `volume = mL/step × steps`) in your production firmware.
-
+   
 ---
 
 ### Serial Output (Optional Debugging)
